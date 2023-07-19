@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="static/css/login.css">
+    <link rel="icon" sizes="32x32" href="../../static/img/favicon-32x32.png">
+    <title>Sign in</title>
+  </head>
+  <a href="help" class="help-button">HELP</a>
+
+  <body>
+    <a href="home" class="home-button">HOME</a>
+    <a href="home">
+      <img class="logo-button" src="../../static/img/zolco logo.png" alt="Zolco logo">
+    </a>
+
+    <div class="container">
+
+      <div class="left">
+        <h1>Log in to get started!</h1>
+      </div>
+
+      <div class="right">
+        <h2>Log In</h2>
+
+        <form action="/signin" method="post">
+        {% csrf_token  %}
+          <label for="name">Username:</label>
+          <input type="text" id="username" name="username">
+
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password">
+
+          <input type="submit" value="Sign In">
+
+          <h4>Don't have an account? <a href="signup">Sign up.</as></h4>
+        </form>
+        {% if messages %}
+          <ul class="messages">
+            {% for message in messages %}
+              <li class="alert">{{ message|safe }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+
+      </div>
+
+    </div>
+
+  </body>
+
+</html>

@@ -1,0 +1,100 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="static/css/playground.css">
+        <link rel="stylesheet" href="{% static 'css/playground.css' %}">
+        <title>Dashboard</title>
+        <link rel="icon" sizes="32x32" href="../../static/img/favicon-32x32.png">
+    </head>
+    <a href="help" class="help-button">HELP</a>
+    <body>
+        <div class="app-container">
+            <div class="app-header">
+                <div class="app-header-left">
+                    <img src="{% static 'img/zolco logo.png' %}" class="app-icon">
+                    <p class="app-name">Zolco</p>
+                </div>
+                <div class="app-header-right">
+                    <a href="home" class="sign-out" title="home">
+                    <svg href="home" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                        <polyline points="9 22 9 12 15 12 15 22" /></svg>
+                    </a>
+                    <a href="signout" class="sign-out" title="Sign Out">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" fill="none">
+                        <path d="M14 7.63636L14 4.5C14 4.22386 13.7761 4 13.5 4L4.5 4C4.22386 4 4 4.22386 4 4.5L4 19.5C4 19.7761 4.22386 20 4.5 20L13.5 20C13.7761 20 14 19.7761 14 19.5L14 16.3636" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M10 12L21 12M21 12L18.0004 8.5M21 12L18 15.5" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    </a>
+                    <button class="profile-btn">
+
+                    {% if user.is_authenticated %}
+                        <span> {{first_name}} </span>
+                    {% else %}
+                        {% load static %}
+                        <script>
+                            window.location.href = "signin";
+                            alert("User is not authenticated, you must log in to view your dashboard. Closing this window will redirect.");
+                        </script>
+                    {% endif %}
+                    
+                    </button>
+                </div>
+            </div>
+            <div class="app-content">
+            <div class="app-sidebar">
+                <a href="config" class="app-sidebar-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-activity"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg> 
+                </a>
+                <a href="dashboard" class="app-sidebar-link active">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-activity"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg> 
+                </a>
+            </div>
+            <div class="text-section">
+                <div contenteditable="true" class="textfield">{{ result }}</div>
+                <div class="dials">
+                    <form action="{% url 'submit_form' %}" method="post" name="generation">
+                        {% csrf_token %}
+                        <legend style="font-size:10%px;text-decoration: underline;">Class</legend>
+                        <input class="option-container" name="class">
+
+                        <legend style="font-size:10%px;text-decoration: underline;">Student</legend>
+                        <input class="option-container" name="student">
+
+                        <legend style="font-size:10%px;text-decoration: underline;">Student Behaviour</legend>
+                        <div class="slider-container">
+                            <div class="slidecontainer">
+                                <input id="behaviour" name="behaviour" type="range" min="1" max="7" value="3" class="slider">
+                            </div>
+                            <legend id="behaviourLabel" style="font-size:10%px;text-align: center;">Passive</legend>
+                        </div>
+
+                        <legend style="font-size:10%px;text-decoration: underline;">Student Attendance</legend>
+                        <div class="slider-container">
+                            <div class="slidecontainer">
+                                <input id="attendance" name="attendance" type="range" min="1" max="7" value="3" class="slider">
+                            </div>
+                            <legend id="attendanceLabel" style="font-size:10%px;text-align: center;">Tardy</legend>
+                        </div>
+
+                        <legend style="font-size:10%px;text-decoration: underline;">Student Grades</legend>
+                        <div class="slider-container">
+                            <div class="slidecontainer">
+                                <input id="grades" name="grades" type="range" min="1" max="7" value="3" class="slider">
+                            </div>
+                            <legend id="gradesLabel" style="font-size:10%px;text-align: center;">Average</legend>
+                        </div>
+                        <script src="{% static 'js/playground.js' %}"></script>
+                        <div class="gen-container">
+                            <button type="submit" class="gen-button" href="dashboard">
+                                <p>Generate</p>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    </body> 
+<html>

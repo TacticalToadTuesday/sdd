@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Zolco</title>
+    <link rel="stylesheet" href="{% static 'css/global.css' %}">
+    <link rel="stylesheet" href="{% static 'css/index.css' %} ">
+    <link rel="stylesheet" href="{% static 'js/index.js' %} ">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ramabhadra&display=swap" rel="stylesheet">
+    <link rel="icon" sizes="32x32" href="../../static/img/favicon-32x32.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
+  </head>
+  <a href="help" class="help-button">HELP</a>
+  <body>
+    <header>
+      <div class="logo">
+        <img src="../../static/img/zolco logo.png" alt="Zolco logo">
+
+        <h1 class="logotext"></h1>
+
+      </div>
+      <nav>
+        <ul>
+          <li><a class="selected" href="home">HOME</a></li>
+
+          {% if user.is_authenticated %}
+          <li><a href="dashboard">DASHBOARD</a></li>
+          <li><a href="signout">LOGOUT</a></li>
+
+          {% else %}
+          <li><a href="signin">LOGIN</a></li>
+          {% endif %}
+        </ul>
+      </nav>
+    </header>
+
+    <div class="landing">
+
+      <div class="right" style="background-image: url('../../static/img/teaching.png');">
+
+        <div class="left">
+          <h1 class="title">Revolutionary efficiency like no other</h1>
+          <p class="info">Zolco provides AI-powered personalized feedback to transform learning. Our research-led platform goes beyond grading to identify student strengths and areas for improvement, informing teaching strategies and improving outcomes. Join schools and educators nationwide who trust Zolco for impactful feedback and a superior learning experience.</p>
+          <a href="signup" class="started">Get Started</a>
+        </div>
+
+      </div>
+      
+    </div>
+
+    <footer>
+      <p>Copyright &copy; 2023 Zolco</p>
+      <p><a href="#">Terms of Service</a> | <a href="#">Privacy Policy</a></p>
+    </footer>
+  </body>
+</html>

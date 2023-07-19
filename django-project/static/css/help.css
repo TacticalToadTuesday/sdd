@@ -1,0 +1,141 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .home-button {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    padding: 10px;
+    color: #2a2a33;
+    text-decoration: none;
+    z-index: 9999;
+    font-family: Arial, sans-serif;
+    border: 1px solid #2a2a33;
+  }
+  
+  .home-button:hover {
+    background-color: #c9c9c9;
+  }
+  
+  .logo-button {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    padding: 10px;
+    text-decoration: none;
+    z-index: 9999;
+    width: 70px;
+    height: 70px;
+  }
+  
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .left {
+    flex: 1;
+    background-color: rgba(42,64,80,.80);
+    color: #f3f6fd;
+    padding: 50px;
+    min-height: 100vh;
+  }
+  
+  .left h1 {
+    font-size: 4vw;
+    font-weight: bold;
+  }
+  
+  .right {
+    flex: 1;
+    background-color: #f3f6fd;
+    color: rgba(42,64,80,.80);
+    padding: 50px;
+    min-height: 100vh;
+  }
+  
+  .right h2 {
+    font-size: 3vw;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  label {
+    font-size: 2vw;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  input[type="text"], input[type="password"] {
+    font-size: 2vw;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 2px solid rgba(42,64,80,.80);
+    border-radius: 5px;
+    background-color: #f3f6fd;
+  }
+  
+  .help-button {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    padding: 10px;
+    color: #2a2a33;
+    text-decoration: none;
+    z-index: 9999;
+    font-family: Arial, sans-serif;
+    border: 1px solid #2a2a33;
+    font-size: 30px;
+  }
+
+  input[type="submit"] {
+    background-color: rgba(42,64,80,.80);
+    color: #fff;
+    font-size: 2vw;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  input[type="submit"]:hover {
+    background-color: #fff;
+    color: #3f3f3f;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border-color: rgba(42,64,80,.80);
+  }
+  
+  @media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+  
+  .left, .right {
+    flex: 1;
+    min-height: auto;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .left h1 {
+    font-size: 6vw;
+  }
+  
+  .right h2 {
+    font-size: 5vw;
+  }
+  
+  label, input[type="text"], input[type="password"], input[type="submit"] {
+    font-size: 4vw;
+    margin-bottom: 10px;
+  }
+  }

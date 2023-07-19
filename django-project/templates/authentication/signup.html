@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Sign up</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="static/css/sign up.css">
+    <link rel="icon" sizes="32x32" href="../../static/img/favicon-32x32.png">
+  </head>
+  <a href="help" class="help-button">HELP</a>
+
+  <a href="home" class="home-button">HOME</a>
+  <a href="home">
+    <img class="logo-button" src="../../static/img/zolco logo.png" alt="Zolco logo">
+  </a>
+  
+  <body>
+
+    <div class="container">
+
+      <div class="left">
+        <h1>Sign up to get started!</h1>
+      </div>
+
+      <div class="right">
+        <h2>Sign Up</h2>
+
+        <form action="/signup" method="post">
+        {% csrf_token %}
+
+          <label for="name">Firstname:</label>
+          <input type="text" id="firstname" name="firstname">
+
+          <label for="name">Lastname:</label>
+          <input type="text" id="lastname" name="lastname">
+
+          <label for="name">Username:</label>
+          <input type="text" id="username" name="username">
+
+          <label for="name">Email:</label>
+          <input type="email" id="email" name="email">
+
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password">
+
+          <input type="submit" value="Create Account">
+          <h4>Already have an account? <a href="signin">Sign in.</a></h4>
+          </form>
+
+          {% if messages %}
+            <ul class="messages">
+              {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+
+      </div>
+
+    </div>
+
+  </body>
+
+</html>
